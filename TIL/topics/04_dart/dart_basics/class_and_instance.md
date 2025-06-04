@@ -34,7 +34,7 @@ class Hero{
   String name;
   int hp;
 
-  Hero(this.name, this.hp); //생성자, 생성자는 필드 순서대로 작성해야함
+  Hero(this.name, this.hp); //생성자
 
   void attack(){
     hp--;
