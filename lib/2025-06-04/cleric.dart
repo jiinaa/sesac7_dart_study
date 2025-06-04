@@ -11,5 +11,19 @@ class Cleric{
   final int maxMp = 10; // maxMp는 상수 필드로 선언
 
   Cleric(this.name); // 생성자
+
+  // 클래스에 selfAid 메소드 추가
+  // 이 메소드에는 인수가 없고(), 리턴 값도 없다(void)
+  void selfAid(){
+    if(mp >= 5){
+      mp -= 5; // mp 5 소모
+      hp = maxHp.clamp(0, 50); 
+      // hp는 최대hp 값으로 변경하고, maxHp는 최대 50을 넘지않는다(clamp(min,max))
+
+      // clamp 말고 다른 방법으로 해결가능한지 확인
+    }else{
+      print('mp값이 부족합니다');
+    }
+  }
 }
 
