@@ -1,3 +1,5 @@
+import 'dart:math'; // random 함수 사용을 위한 import
+
 // 클래스(붕어빵 틀)
 class Cleric{
   
@@ -24,6 +26,20 @@ class Cleric{
     }else{
       print('mp값이 부족합니다');
     }
+  }
+
+  // pray 메소드 추가
+  int pray(){
+
+    // mp가 0보다 크고 10보다 작은 범위일때
+    if(mp < 10 && mp > 0 ){
+      int randomPoint = Random().nextInt(2); // 정수인 
+      mp += randomPoint;
+    }else{
+      print('mp값을 수정할 수 없습니다');
+    }
+
+    return mp.clamp(0,10);
   }
 }
 
