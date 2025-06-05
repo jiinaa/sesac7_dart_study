@@ -10,8 +10,10 @@ class Cleric {
   // 모든 파일에 공유되는 필드
   static const int maxHp = 50;
   static const int maxMp = 10;
+  // Q. 여기서 static final 로 수정시 에러 메세지가 '선택적 parameter의 기본값은 반드시 상수여야 한다' 고 하는 이유가 dart의 type safety 때문인가요?
 
   Cleric({required this.name, this.hp = Cleric.maxHp, this.mp = Cleric.maxMp}); // 생성자
+  
   // 이름과 Hp 만으로 지정하여 인스턴스화 할때 mp는 최대 mp 와 같은 값이 초기화 된다
   
   // 클래스에 selfAid 메소드 추가
