@@ -1,26 +1,22 @@
 import 'dart:math'; // random 함수 사용을 위한 import
 
-// 클래스(붕어빵 틀)
 class Cleric {
   // 필드
   String name;
-
   int hp = 50; // hp, maxHp는 정수로 초기값 50
-  final int maxHp = 50; // maxHp 는 상수 필드로 선언
-
   int mp = 10; // mp, maxMp는 정수로 초기치 10
-  final int maxMp = 10; // maxMp는 상수 필드로 선언
 
-  // final int maxHp = 10;
-  // int mp = maxHp;
-  // 런타임 상수라서 컴파일 타임 상수에 대입할 수 없다
+  // 각 인스턴스별로 최대 HP와 최대 MP 필드에 대한 정보를 가지고 있다
+  // 모든 파일에 공유되는 필드
+  static int maxHp = 50;
+  static int maxMp = 10;
 
   Cleric({required this.name, this.hp = 50, this.mp = 10}); // 생성자
   // 생성자와 필드 매칭
   // test code 에서 지정한 값을 사용해 test 를 하기 위해서 생성자와 매칭된 필드값이 필요함
 
   // 클래스에 selfAid 메소드 추가
-  // 이 메소드에는 인수가 없고(인수?), 리턴 값도 없다(void)
+  // 이 메소드에는 인수가 없고, 리턴 값도 없다(void)
   // 결과가 없어서 어딘가에 담길수없음
   void selfAid() {
     if (mp >= 5 && hp < maxHp) {
