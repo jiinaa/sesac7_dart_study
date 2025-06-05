@@ -8,49 +8,56 @@ class Cleric {
 
   // 각 인스턴스별로 최대 HP와 최대 MP 필드에 대한 정보를 가지고 있다
   // 모든 파일에 공유되는 필드
-  static int maxHp = 50;
-  static int maxMp = 10;
+  static const int maxHp = 50;
+  static const int maxMp = 10;
 
-  Cleric({required this.name, this.hp = 50, this.mp = 10}); // 생성자
-  // 생성자와 필드 매칭
-  // test code 에서 지정한 값을 사용해 test 를 하기 위해서 생성자와 매칭된 필드값이 필요함
-
+  Cleric({required this.name, this.hp = Cleric.maxHp, this.mp = Cleric.maxMp}); // 생성자
+  // 이름과 Hp 만으로 지정하여 인스턴스화 할때 mp는 최대 mp 와 같은 값이 초기화 된다
+  
   // 클래스에 selfAid 메소드 추가
   // 이 메소드에는 인수가 없고, 리턴 값도 없다(void)
   // 결과가 없어서 어딘가에 담길수없음
-  void selfAid() {
-    if (mp >= 5 && hp < maxHp) {
-      mp -= 5; // mp 5 소모
-      hp = maxHp;
-      // hp는 최대hp 값으로 변경
 
-      // return;
-      // 이렇게 작성해도 return 값은 없음
-      // 조건마다 return 시켜서 활용한다
+  void selfAid() {
+    int usedMp = 5; // 동작시 소모되는 mp 값
+
+    // 예외처리 조건을 나눠보자
+    if (mp < usedMp) {
+      print('mp가 부족합니다');
+      return;
+    }
+    if (hp > Cleric.maxHp) {
+      print('hp가 max값을 넘을 수 없습니다');
+      return;
     } else {
-      print('mp값이 부족합니다');
+      mp -= usedMp; // mp 소모
+      hp = Cleric.maxHp;
+      // hp는 최대hp 값으로 변경
     }
   }
 
   // pray 메소드 추가
   // 인수에 기도할 시간(초)를 지정할 수 있고
   // 리턴값은 실제로 회복된 mp 양
-  int pray(int praySec) {
+  int pray (int praySec) {
     // mp가 0보다 크고 10보다 작은 범위일때
-    if (mp < 10 && mp > 0) {
-      int randomPoint = Random().nextInt(3); // 0~2 사이 정수 Q.재확인필요
-      int healScore = praySec + randomPoint;
-      mp = (mp + healScore).clamp(0, maxHp);
 
-      // min() 함수: Returns the lesser of two numbers.
-
+    // 예외처리를 해보자
+    if (praySec <= 0) { // 기도하는 시간이 0초이거나 -일때
+      return 0;
+    } if (mp >= 10 && mp < 0) { // mp 값이 이미 10이거나 10보다 클때, mp가 마이너스 일때?
+      return 0;
+    } else { 
+      final int randomPoint = Random().nextInt(3); // 랜덤한 포인트 생성(Q.여기서 final 써야하나?)
+      final int healScore = praySec + randomPoint; // 실제 기도한 시간에 랜덤 포인트를 더해서 실제 회복되는 mp값(Q.여기서 final 써야하나?)
+      
+      mp = (mp + healScore).clamp(0, Cleric.maxHp); // mp값은 0 ~ maxHp 사이의 값으로 존재
+      
       print('mp는 $mp');
       print('randomPoint는 $randomPoint');
       print('회복된 mp 양은 $healScore');
-      return healScore;
-    } else {
-      print('mp값을 수정할 수 없습니다');
-      return 0;
+      
+      return healScore; //실제 회복된 mp양
     }
   }
 }
