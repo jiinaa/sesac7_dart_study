@@ -22,6 +22,10 @@ void main(){
       final cleric02 = Cleric(name: '아서스', hp: 40);
       final cleric03 = Cleric(name: '아서스');
 
+      expect(cleric02.mp, 10);
+      expect(cleric03.hp, 50);
+      expect(cleric03.mp, 10);
+
       // when(실행)
       cleric02.selfAid();
       cleric03.selfAid();
@@ -29,7 +33,6 @@ void main(){
       // then(검증)
       // 이 때, MP는 최대 MP와 같은 값이 초기화 된다
       expect(cleric02.mp, 5);
-      expect(cleric03.hp, 50);
     });
 
   });

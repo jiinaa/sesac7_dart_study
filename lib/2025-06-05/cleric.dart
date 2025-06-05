@@ -26,7 +26,7 @@ class Cleric {
       print('mp가 부족합니다');
       return;
     }
-    if (hp > Cleric.maxHp) {
+    if (hp >= Cleric.maxHp) {
       print('hp가 max값을 넘을 수 없습니다');
       return;
     } else {
