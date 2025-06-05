@@ -23,11 +23,8 @@ class Cleric{
   void selfAid(){
     if(mp >= 5 && hp < maxHp){
       mp -= 5; // mp 5 소모
-      hp = maxHp.clamp(0, 50); 
-      // hp는 최대hp 값으로 변경하고, maxHp는 최대 50을 넘지않는다(clamp(min,max))
-
-      // Q.clamp 말고 다른 방법으로 해결가능한지 확인
-      // Q.정확히 작동하고 있는지 확인 필요
+      hp = maxHp; 
+      // hp는 최대hp 값으로 변경
     }else{
       print('mp값이 부족합니다');
     }
@@ -40,11 +37,12 @@ class Cleric{
 
     // mp가 0보다 크고 10보다 작은 범위일때
     if(mp < 10 && mp > 0 ){
-      int randomPoint = Random().nextInt(2); // 0~2 사이 정수 Q.재확인필요
+      int randomPoint = Random().nextInt(3); // 0~2 사이 정수 Q.재확인필요
       int healScore = praySec + randomPoint;
-      mp += healScore;
-      print('randomPoint는 $randomPoint 입니다');
-      print('회복된 mp 양은 $healScore 입니다');
+      mp = (mp + healScore).clamp(0, maxHp);
+      print('mp는 $mp');
+      print('randomPoint는 $randomPoint');
+      print('회복된 mp 양은 $healScore');
       return healScore;
     }else{
       print('mp값을 수정할 수 없습니다');
