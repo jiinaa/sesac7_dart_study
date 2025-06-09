@@ -17,7 +17,7 @@ void main(){
     // final maxHp = 50;
     // expect(cleric1.hp, maxHp);
 
-    // (magic number?)의미있는 숫자인 경우
+    // magic number: 의미를 알수없는 숫자가 직접 코드에 쓰여있는 경우
     // final in selfAidMp = 5;
 
     // then(검증)
@@ -51,6 +51,7 @@ void main(){
 
     // when(실행)
     cleric2.selfAid();
+
     // then(검증)
     expect(cleric2.hp, equals(50));
     expect(cleric2.mp, equals(0));
@@ -71,6 +72,21 @@ void main(){
 
     // then(검증)
     expect(afterMp, equals(beforeMp+healScore));
+  });
+
+  test('pray 메서드 경계값 테스트',(){
+    // given(준비)
+    final cleric4 = Cleric(name: '테스트', hp: 10, mp: 3);
+
+    // 경계값 테스트: 0, 1, 9, 10
+    for (int seconds in [0,1,9,10]) {
+      final beforeMp = cleric4.mp;
+      final healScore = cleric4.pray(seconds);
+      final afterMp = cleric4.mp;
+
+      expect(afterMp, equals(beforeMp + healScore));
+      expect(healScore, inInclusiveRange(0, 10));
+    }
   });
 }
 

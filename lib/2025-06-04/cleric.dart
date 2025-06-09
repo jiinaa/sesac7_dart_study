@@ -44,7 +44,7 @@ class Cleric {
     if (mp < 10 && mp > 0) {
       int randomPoint = Random().nextInt(3); // 0~2 사이 정수 Q.재확인필요
       int healScore = praySec + randomPoint;
-      mp = (mp + healScore).clamp(0, maxHp);
+      mp = (mp + healScore).clamp(0, maxMp);
 
       // min() 함수: Returns the lesser of two numbers.
 

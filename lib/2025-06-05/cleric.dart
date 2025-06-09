@@ -47,13 +47,13 @@ class Cleric {
     // 예외처리를 해보자
     if (praySec <= 0) { // 기도하는 시간이 0초이거나 -일때
       return 0;
-    } if (mp >= 10 && mp < 0) { // mp 값이 이미 10이거나 10보다 클때, mp가 마이너스 일때?
+    } if (mp >= 10 || mp < 0) { // mp 값이 이미 10이거나 10보다 클때, mp가 마이너스 일때
       return 0;
     } else { 
       final int randomPoint = Random().nextInt(3); // 랜덤한 포인트 생성(Q.여기서 final 써야하나?)
       final int healScore = praySec + randomPoint; // 실제 기도한 시간에 랜덤 포인트를 더해서 실제 회복되는 mp값(Q.여기서 final 써야하나?)
       
-      mp = (mp + healScore).clamp(0, Cleric.maxHp); // mp값은 0 ~ maxHp 사이의 값으로 존재
+      mp = (mp + healScore).clamp(0, Cleric.maxMp); // mp값은 0 ~ maxMp 사이의 값으로 존재
       
       print('mp는 $mp');
       print('randomPoint는 $randomPoint');
