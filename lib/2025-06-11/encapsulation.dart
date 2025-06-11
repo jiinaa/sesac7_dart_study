@@ -5,7 +5,7 @@ class Person{
   // Person({required String inputName, required int inputAge}) : _storeName = inputName, _storeAge = inputAge;
 
   // 세터를 통해서 인스턴스를 초기화
-  Person({String inputName = ''}){
+  Person({required String inputName}){
     nameSetter = inputName;
   }
 
