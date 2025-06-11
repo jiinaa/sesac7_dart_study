@@ -14,8 +14,8 @@ class Person{
   // this.변수명 = 값을 사용할때 클래스 안에 그 이름의 setter 가 있어야한다.
 
   // getter
-  // String get name => _name;
-  // int get age => _age;
+  String get name => _name;
+  int get age => _age;
 
   // setter: 함수처럼 동작
   // set name(String value) => _name = value;
