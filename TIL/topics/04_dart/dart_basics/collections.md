@@ -1,4 +1,4 @@
-# Dart collections
+# Dart collections(자료구조의 모음을 collections)
 
 ## 자료 구조
 - 배열과 리스트는 자료구조
@@ -17,3 +17,34 @@
 - Dart는 기본적으로 List 클래스가 배열의 역할 대체
 - 유동적인 크기
 - 조금 느릴 수 있음
+
+```dart
+void main(){
+    List<String> name = []; 
+
+    final names2 = <String>[];
+    names2.add('a');
+
+    // dynamic type
+    final names3 = [];
+    names3.add('bbb');
+    names3.add('222');
+    
+    // 타입을 정확하게 정해주고 사용하는게 에러 방지
+    
+    var name5 = '홍길동'; // 타입 추론되며 한번 결정된 타입이 변하지 않는다
+    
+    // 금지, type safety 에 완전 반대되는 성격의 타입
+    dynamic name4 = '홍길동';
+    dynamic name4 = true;
+    dynamic name4 = null;
+    dynamic name4 = '한석봉';
+    print(name4.length);
+
+    // 타입을 쓰지않으면 암묵적으로 dynamic
+    // return 에도 타입을 써야한다
+
+    // dynamic 사용시 ?
+    // null 인 경우에는 터진다
+}
+```

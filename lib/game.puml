@@ -1,0 +1,11 @@
+@startuml
+
+class Cleric{
+    + int hp
+    - int mp
+
+    + void attack()
+    - void die()
+}
+
+@enduml
