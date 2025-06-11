@@ -115,7 +115,7 @@ Map<String, dynamic> gildong = {
     'name': '홍길동',
     'id': 0,
     'age': 20,
-}
+};
 ```
 - Map 대신 클래스 만들어서 사용하기
 
