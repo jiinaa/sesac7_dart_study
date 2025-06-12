@@ -16,7 +16,7 @@ class Slime{
 // 클래스 명 pascal
 class Hero{
 
-  //
+  // 기본 hp 값
   static double defaultHp = 50;
 
   // 필드영역
