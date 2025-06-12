@@ -22,18 +22,16 @@ class PoisonSlime extends Slime{
     // poisonCount가 0이 아닐때
     // 화면에 '추가로, 독 포자를 살포했다!' 를 표시
     double poisonDamege = hero.hp / 5;
-    double heroHp = hero.hp;
 
     if (poisonCount < 0) {
       throw Exception('이름이 너무 깁니다');
     } else {
-      print('전 영웅 hp $heroHp');
       print('추가로, 독 포자를 살포했다!');
       // 용사의 hp의 1/5에 해당하는 포인트를 용사의 hp로 부터 감소시키고
       hero.hp -= poisonDamege;
       print('$poisonDamege의 데미지');
 
-      print('후 영웅 hp $heroHp');
+      print('후 영웅 hp ${hero.hp}');
       // poisonCount 1 감소
       poisonCount -= 1;
     }
