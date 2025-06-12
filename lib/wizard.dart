@@ -79,7 +79,7 @@ class Wizard {
     // mp가 부족하면 "마나가 부족합니다" 출력
     if (mp < 0) {
       print('마나가 부족합니다');
-      throw Exception('이름이 너무 깁니다');
+      throw Exception('마나가 부족합니다');
     } else {
       // hp를 20회복시키고 자신의 mp를 10소모
       mp -= 10;
