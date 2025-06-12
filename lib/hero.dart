@@ -2,17 +2,23 @@ class Slime{
   int hp = 50;
   final String suffix;
 
+  static int defaultAttack = 10;
+
   Slime(this.suffix);
 
   void attack(Hero hero){
     print('슬라임 $suffix이/가 공격했다');
     print('10의 데미지');
-    hero.hp -= 10;
+    hero.hp -= defaultAttack;
   }
 }
 
 // 클래스 명 pascal
 class Hero{
+
+  //
+  static double defaultHp = 50;
+
   // 필드영역
   // 필드명 camelcase
   String name;
