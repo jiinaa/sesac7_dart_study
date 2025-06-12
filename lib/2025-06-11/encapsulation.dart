@@ -17,7 +17,6 @@ class Person{
     if (newName.length > 8) {
       throw Exception('이름이 너무 깁니다');
     }
-
     _storeName = newName;
   }
 

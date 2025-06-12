@@ -14,6 +14,11 @@ void main(){
     expect(() => Wizard(name: '마법사', hp: 0, mp: 0, wand: Wand(name: '지팡이1', power: 0)) , throwsException);
   });
 
+  // 경계값 설정해서 체크
+  // expect(() => wand.name = '지팡이1', throwsException);
+
+  // 범위 체크하는 inInclusiveRange
+
   test('wizard hp가 음수이면 hp를 0으로',(){
     final wizard01 = Wizard(name: '마법사', hp: -2, wand: Wand(name: '지팡이1', power: 1));
     expect(wizard01.hp, 0);
