@@ -21,8 +21,13 @@ void main() {
     final slime02 = PoisonSlime('슬라임2');
 
     slime02.attack(hero02);
-    expect(hero02.hp, equals(Hero.defaultHp - Slime.defaultAttack));
-  }, skip: true);
+
+    final expectedAttack = Hero.defaultHp - Slime.defaultAttack;
+    final expectedPoison = expectedAttack / 5;
+    final expectHp = expectedAttack - expectedPoison;
+    
+    expect(hero02.hp, equals(expectHp));
+  });
 
   test('독슬라임이 영웅 1회 공격시 poisonCount 1 감소', (){
     final hero03 = Hero(name: '영웅3', hp: Hero.defaultHp);

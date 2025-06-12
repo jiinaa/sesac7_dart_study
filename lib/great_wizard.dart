@@ -5,6 +5,7 @@ class Greatwizard extends Wizard {
   Greatwizard({required super.name});
 
   static int defaultMP = 150;
+  static int needMP = 50;
 
   @override int mp = defaultMP;
 
@@ -15,12 +16,12 @@ class Greatwizard extends Wizard {
   }
 
   void superHeal(Hero hero) {
-    if ( mp < 0) {
+    if ( mp < needMP) {
       print('마나가 부족합니다');
       throw Exception('마나가 부족합니다');
     } else {
       hero.hp = Hero.defaultHp;
-      mp -= 50;
+      mp -= needMP;
       print('슈퍼 힐을 시전했습니다. 대상 HP: ${hero.hp}');
     }
   } 

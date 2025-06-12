@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
-import 'package:modu_3_dart_study/2025-06-11/wizard.dart';
+// import 'package:test/test.dart';
+// import 'package:modu_3_dart_study/2025-06-11/wizard.dart';
 
 void main(){
   // test('wizard 이름이 세글자 이하일때',(){

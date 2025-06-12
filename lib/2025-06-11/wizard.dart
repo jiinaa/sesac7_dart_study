@@ -1,8 +1,8 @@
 class Wand {
-  String _name = '';
-  double _power = 0;
+  String _name;
+  double _power;
 
-  Wand({required String name,required double power}){
+  Wand({required String name,required double power}) : _name = name, _power = power{
     wandName = name;
     wandPower = power;
   }
@@ -28,13 +28,13 @@ class Wand {
 }
 
 class Wizard {
-  String _name = '';
-  int _hp = 0;
-  int _mp = 0;
+  String _name;
+  int _hp;
+  int _mp;
   Wand? wand;
   
   // 마법사가 생성된 이후에는 지팡이를 null로 설정할 수 없다
-  Wizard({required String name, int hp = 0, int mp = 0, required Wand wand}){
+  Wizard({required String name, int hp = 0, int mp = 0, required Wand wand}) : _name = name, _hp = hp, _mp = mp{
     this.name = name;
     this.mp = mp;
     this.hp = hp;
