@@ -14,7 +14,7 @@ class GreatWizard extends Wizard {
 
   @override
   void heal(Hero hero) {
-    if (mp < 0) {
+    if (mp < 5) {
       print('마나가 부족합니다');
       throw Exception('마나가 부족합니다');
     } 

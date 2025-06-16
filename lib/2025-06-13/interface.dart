@@ -23,18 +23,19 @@ class Hero implements Attackable, Healable {
   @override
   void attack(Slime target) {
     print('$name의 물리 공격!');
-    target.hp -= 10;
+    // target.hp -= 10;
+    target.hp -= (target.hp - 10).clamp(0, target.hp);
     print('${target.suffix}에게 10의 데미지! 남은 HP: ${target.hp}');
   }
   
   @override
   void defend() {
-    // TODO: implement defend
+    throw UnimplementedError('아직 구현되지 않았습니다.');
   }
   
   @override
   void heal(Hero target) {
-    // TODO: implement heal
+    throw UnimplementedError('아직 구현되지 않았습니다.');
   }  
 }
 

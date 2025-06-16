@@ -21,7 +21,7 @@ class Dancer extends Character{
 
   @override
   void attack(Slime slime) {
-    // TODO: implement attack
+    print('$name이 ${slime.suffix} 에게 공격');
   }
 
 }

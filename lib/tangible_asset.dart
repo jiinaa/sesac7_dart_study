@@ -17,14 +17,14 @@ abstract class IntangibleAsset {}
 // 다 : 특허권
 class Patent extends IntangibleAsset{}
 
-abstract class TangilbleAsset extends Asset implements Thing {
+abstract class TangibleAsset extends Asset implements Thing {
   int price;
   String color;
 
-  TangilbleAsset({required super.name, required this.price, required this.color, });
+  TangibleAsset({required super.name, required this.price, required this.color, });
 }
 
-class Book extends TangilbleAsset{
+class Book extends TangibleAsset{
   String isbn;
   double _weight;
 
@@ -43,7 +43,7 @@ class Book extends TangilbleAsset{
   double get weight => _weight;
 }
 
-class Computer extends TangilbleAsset{
+class Computer extends TangibleAsset{
   String makerName = '';
   double _weight;
 

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:modu_3_dart_study/tangilble_asset.dart';
+import 'package:modu_3_dart_study/tangible_asset.dart';
 
 void main() {
   test('클래스 Book을 활용한 인스턴스 올바른 생성 가능', (){
