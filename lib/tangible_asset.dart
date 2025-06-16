@@ -8,7 +8,7 @@ abstract class Asset{
 // 형태가 있는것
 abstract interface class Thing{
   double get weight;
-  set weight(value){}
+  set weight(value);
 }
 
 // 나 : 무형자산
@@ -35,6 +35,7 @@ class Book extends TangibleAsset{
 
   @override
   set weight(value) {
+    _weight = value;
     print('$value kg');
   }
   
@@ -44,7 +45,7 @@ class Book extends TangibleAsset{
 }
 
 class Computer extends TangibleAsset{
-  String makerName = '';
+  String makerName;
   double _weight;
 
   Computer({required super.price, required super.color, required super.name, double weight = 0, required this.makerName}) : _weight = weight{
@@ -56,6 +57,7 @@ class Computer extends TangibleAsset{
   
   @override
   set weight(value) {
+    _weight = value;
     print('$value kg');
   }  
 }
