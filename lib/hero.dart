@@ -2,7 +2,7 @@ class Slime {
   int hp = 50;
   final String suffix;
 
-  static int defaultAttack = 10;
+  static int defaultAttack = 10; // 기본 공격값
 
   Slime(this.suffix);
 
@@ -13,15 +13,24 @@ class Slime {
   }
 }
 
-// 클래스 명 pascal
+class Sword{
+  String name;
+  int damage;
+
+  Sword({
+    required this.name,
+    required this.damage
+  });
+}
+
 class Hero {
-  // 기본 hp 값
-  static double defaultHp = 50;
+  
+  static double defaultHp = 50; // 기본 hp 값
 
   // 필드영역
-  // 필드명 camelcase
   String name;
   double hp;
+  Sword? sword;
 
   Hero({required this.name, this.hp = 0}); // 생성자
 
@@ -29,7 +38,7 @@ class Hero {
   // 메소드명 camelcase
   void attack(Slime slime) {
     print('$name 이 $slime 을 공격했다');
-    hp -= 10;
+    hp -= Slime.defaultAttack;
   }
 
   void run() {

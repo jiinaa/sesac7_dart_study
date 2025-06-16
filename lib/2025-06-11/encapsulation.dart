@@ -1,6 +1,6 @@
 class Person {
   String _storeName; // private 필드
-  int _storeAge;
+  final int _storeAge;
 
   // 생성자에서 setter 를 안거치고 직접 저장
   // Person({required String inputName, required int inputAge}) : _storeName = inputName, _storeAge = inputAge;
@@ -13,7 +13,7 @@ class Person {
   }
 
   set nameSetter(String newName) {
-    if (newName.length < 1) {
+    if (newName.isEmpty) {
       throw Exception('이름이 너무 짧습니다');
     }
 

@@ -16,7 +16,7 @@ class Book extends TangibleAsset{
   }
 
   @override
-  set weight(value) {
+  set weight(double value) {
     _weight = value;
     print('$value kg');
   }
@@ -43,7 +43,7 @@ class Computer extends TangibleAsset{
   double get weight => _weight;
   
   @override
-  set weight(value) {
+  set weight(double value) {
     _weight = value;
     print('$value kg');
   }  

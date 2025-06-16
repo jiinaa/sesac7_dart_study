@@ -3,7 +3,7 @@ import 'asset.dart';
 // 형태가 있는것
 abstract interface class Thing{
   double get weight;
-  set weight(value);
+  set weight(double value);
 }
 
 // 나 : 무형자산

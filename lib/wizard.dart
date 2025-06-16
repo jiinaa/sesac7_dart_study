@@ -15,6 +15,7 @@ class Wand {
       throw Exception('지팡이 이름이 너무 짧습니다');
     }
     _name = newWandName;
+    print('지팡이의 이름은 $_name입니다');
   }
 
   // 지팡이의 마력은 0.5 이상 100 이하
@@ -26,6 +27,7 @@ class Wand {
       throw Exception('지팡이의 마력은 100.0 이상이여야 합니다');
     }
     _power = newWandPower;
+    print('지팡이의 마력은 $_power 입니다');
   }
 }
 
@@ -56,6 +58,7 @@ class Wizard {
       throw Exception('마법사 이름이 너무 짧습니다');
     }
     _name = newName;
+    print('마법사 이름은 $_name입니다');
   }
 
   // 마법사의 MP는 0 이상이여야 한다

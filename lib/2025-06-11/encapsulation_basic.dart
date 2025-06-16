@@ -27,7 +27,11 @@ class Person {
   }
 
   set name(String newName) {
-    if (newName.length < 1) {
+    // if (newName.length < 1) {
+    //   throw Exception('이름이 너무 짧습니다');
+    // }
+
+    if (newName.isEmpty) {
       throw Exception('이름이 너무 짧습니다');
     }
 

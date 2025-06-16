@@ -11,7 +11,8 @@ class Cleric {
   // 모든 파일에 공유되는 필드
   static const int maxHp = 50;
   static const int maxMp = 10;
-  // Q. 여기서 static final 로 수정시 에러 메세지가 '선택적 parameter의 기본값은 반드시 상수여야 한다' 고 하는 이유가 dart의 type safety 때문인가요?
+  // Q. 여기서 static final 로 수정시 에러 메세지가 '선택적 parameter의 기본값은 반드시 상수여야 한다' 고 하는 이유?
+  // A. static 은 컴파일타임 상수라서 런타임 상수인 final을 기본값으로 사용할 수 없다
 
   Cleric(this.name, {this.hp = Cleric.maxHp, this.mp = Cleric.maxMp}); // 생성자
   // 이름은 중괄호에서 빼기
@@ -57,10 +58,10 @@ class Cleric {
     } else {
       final int randomPoint = Random().nextInt(
         3,
-      ); // 랜덤한 포인트 생성(Q.여기서 final 써야하나?)
+      ); // 랜덤한 포인트 생성
       final int healScore =
           praySec +
-          randomPoint; // 실제 기도한 시간에 랜덤 포인트를 더해서 실제 회복되는 mp값(Q.여기서 final 써야하나?)
+          randomPoint; // 실제 기도한 시간에 랜덤 포인트를 더해서 실제 회복되는 mp값
 
       mp = (mp + healScore).clamp(0, Cleric.maxMp); // mp값은 0 ~ maxMp 사이의 값으로 존재
 
