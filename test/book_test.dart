@@ -6,25 +6,28 @@ void main () {
 
   // 컬렉션 라이브러리 첫 페이지 참고해서 testcode 작성
 
+  // 인스턴스가 생성되면서 자동으로 bookList 안에 담긴다
   final now = DateTime.now();
-  final today = DateTime(now.year, now.month, now.day);
+  final today = DateTime(now.year, now.month, now.day); // day 까지만 확인한다
+
+  final bookList = SortBookList();
 
   test('제목과 출간일이 같으면 같은 책으로 판단하지만 같은 인스턴스는 아니다', (){
         
-    // 테스트 날짜 당일이면서 시간만 다르게 표기
-
-    // day 까지만 확인한다
+    // 테스트 날짜 당일이면서 시간만 다르게 표기  
     Book book1 = Book(title: 'book01', comment: 'book1 comment', publishDate: now);
     Book book2 = Book(title: 'book01', comment: 'book2 comment', publishDate: today);
-
-    bookList.add(book1);
-    bookList.add(book2);
 
     // title 과 publishDate 가 day까지 같으면 같은 책이라고 판단한다
     expect(book1 == book2, true);
 
     // 비교하는 두가지 인스턴스는 다른 hashcode 를 가진다
     expect(book1.hashCode == book2.hashCode, false);
+
+    // 참조가 다르다 (같은 내용이지만 서로 다른 인스턴스)
+    expect(
+      const SetEquality(IdentityEquality()).equals({book1}, {book2}), false
+    );
   });
 
   test('제목과 출간일이 같은 각 인스턴스의 제목과 출간일의 hashcode는 같다', (){
@@ -57,14 +60,22 @@ void main () {
 
     print(bookList);
 
-    expect(book5, bookList[0]);
+    expect(bookList.books.first, equals(book5));
+    expect(bookList.books.last, equals(book6));
   });
 
-  test('Book 클래스로 동일한 인스턴스를 복사해서 생성할 수 있다',(){
+  test('copyWith: 동일한 값으로 복사하고 참조는 다르다',(){
     Book book8 = Book(title: 'book8', comment: 'book8 comment', publishDate: today);
     Book book9 = book8.copyWith();
 
     // expect(SetEquality(IdentityEquality(book8, book9)), true);
-    expect(book9.publishDate, equals(book8.publishDate));
+    expect(identical(book8, book9), false);
+  });
+
+  test('copyWith: 일부값만 변경가능하다',(){
+    Book book10 = Book(title: 'book10', comment: 'book10 comment', publishDate: today);
+    Book book11 = book10.copyWith(title: 'book11');
+
+    expect(book11.comment, equals('book10 comment'));
   });
 }

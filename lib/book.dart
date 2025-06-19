@@ -12,15 +12,19 @@ class Book{
     required this.title, 
     required this.comment,
     DateTime? publishDate,
-  }) : publishDate = publishDate ?? DateTime.now();
+  }) : publishDate = publishDate ?? DateTime.now(); 
+  // {
+  //   // 생성될때 자동으로 리스트에 추가 + 정렬
+  //   bookList.add(this);
+  //   bookList.sort((a, b) => -a.publishDate.compareTo(b.publishDate));
+  // }
 
   //: publishDate = publishDate ?? today;
   // 안되는 이유
-
   // 인스턴스가 안생겼는데 클래스의 필드 사용하려고 해서 클래스 내부에서 사용 불가
   // final todayDate = Book.publishDate.toString().substring(0,10);
 
-  // copyWith()
+  // copyWith() 일부필드만 수정하는 코드인가?
   Book copyWith({
     String? title,
     String? comment,
@@ -35,7 +39,8 @@ class Book{
 
   @override
   String toString() {
-    return 'Book(publishDate: $publishDate)';
+    return 'Book(title: $title, publishDate: ${publishDate.toString()}, comment: $comment';
+    // toIso8601String(): 국제표준형식의 문자열로 반환
   }
 
   // 제목과 출간일이 같으면 같은 책으로 판단한다
@@ -45,8 +50,10 @@ class Book{
     identical(this, other) || 
     other is Book && 
     title == other.title &&
-    publishDate.toString().substring(0,10) == other.publishDate.toString().substring(0,10);
-    // publishDate.DateTime(publishDate.year, publishDate.month, publishDate.day)
+    // publishDate.toString().substring(0,10) == other.publishDate.toString().substring(0,10) &&
+    publishDate.year == other.publishDate.year &&
+    publishDate.month == other.publishDate.month &&
+    publishDate.day == other.publishDate.day;
   
   // 리턴이 있을수있나?
 
@@ -58,6 +65,10 @@ class Book{
   //   books.sort((a, b) => a.publishDate.compareTo(b.publishDate));
   //   return books;
   // }
+
+  // 정렬 함수: 출간일 기준 내림차순 정렬
+  // Book class의 정적타입 메서드: 정적타입 메서드를 사용하는 이유
+  // 인스턴스 생성 없이도 호출할 수 있기 때문에 Book.bookList
   
 }
 
@@ -69,8 +80,25 @@ class Book{
 //   }
 // }
 
-final List<Book> bookList = [];
 
-void bookListVoid () {
-  bookList.sort((a, b) => -a.publishDate.compareTo(b.publishDate));
+// 전역으로 전역 가변 상태 사용에 주의가 필요합니다.
+// 전역 가변 리스트와 그를 수정하는 함수는 예측하기 어려운 사이드 이펙트를 발생시킬 수 있습니다.
+
+// final List<Book> bookList = [];
+
+// void bookListVoid () {
+//   bookList.sort((a, b) => -a.publishDate.compareTo(b.publishDate));
+// }
+
+class SortBookList {
+  final List<Book> _bookList = [];
+
+  void add(Book book) {
+    _bookList.add(book);
+    _bookList.sort((a, b) => -a.publishDate.compareTo(b.publishDate));
+  }
+
+  void clear() => _bookList.clear();
+
+  List<Book> get books => _bookList;
 }
