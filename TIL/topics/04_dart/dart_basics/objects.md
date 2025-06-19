@@ -21,10 +21,6 @@ bool operator == (Hero hero) =>
     indentical(this, other) || //indentical : 실제 객체 참조 주소 비교
     other is Hero && runtimeType == other.runtimeType;
 
-    {
-        if(hero is Hero)
-    }
-
 // == 참조 비교
 // 리스트 안에서도 비교 재정의 할 수 있다
 
@@ -36,11 +32,65 @@ bool operator == (Hero hero) =>
 - Set에서 사용
 - 검색 속도가 빠르다
 
+```dart
+// 예시 _name.hashCode값과 _hp.hashCode값을 섞어서 하나의 고유한 새로운 hashcode를 생성하는 것
+int get hashCode => _name.hashCode ^ _hp.hashCode;
+```
+- Set, Map 중복방지를 위해 객체를 비교할 때 hashCode를 확인한다
+
 ### hasecode 참고
 
 - String 은 text 가 같으면 같은 hashcode 값, const 같이
 - name.hashcode 로 비교해서 규칙을 재정의한다
 - 복사한 값
+
+---
+
+## 객체 복사
+
+0. immutable(불변) 타입인 객체들은 얕은 비교로만으로도 참조까지 비교 가능
+
+1. 얕은 복사 메서드: shallowCopy
+```dart
+class Person {
+  final String name;
+  final int age;
+  final Address address;
+
+  Person(this.name, this.age, this.address);
+
+  // 깊은 복사
+  Person shallowCopy() => Person(name, age, address);
+
+  // address 참조 주소가 같기때문에 
+  person2.address.street = '서울';
+  person2.address.street = '부산';
+
+  print(person1.address.street); // person1의 address도 '부산'으로 바뀜
+  print(person2.address.street); // '부산'
+}
+
+
+```
+
+2. 깊은 복사 메서드: deepCopy
+
+```dart
+
+class Person {
+  final String name;
+  final int age;
+  final Address address;
+
+  Person(this.name, this.age, this.address);
+
+  // 깊은 복사
+  Person deepCopy() => Person(name, age, address.deepCopy());
+}
+```
+- address 가 참조 타입(class)이기 때문에 deepCopy()까지 해줘야 진짜 새로운 객체 전체가 생성됨
+Q. 예시코드 재작성해보기
+
 
 ## object 객체
 - 실제로 메모리에 존재하는 실체
