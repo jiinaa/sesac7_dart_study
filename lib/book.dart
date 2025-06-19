@@ -2,12 +2,23 @@ class Book{
   String title;
   DateTime publishDate;
   String comment;
-  
+
+  // DateTime today = DateTime.now();
+  // Static 으로 설정하고 사용할 수 없는 이유
+  // Static 은 클래스 안에 고정되는거지 인스턴스 안에 고정되는 값이 아니다.
+  // Static 은 이 클래스가 로드될때 한번 생성되는 값이 되어버림
+
   Book({
     required this.title, 
     required this.comment,
     DateTime? publishDate,
   }) : publishDate = publishDate ?? DateTime.now();
+
+  //: publishDate = publishDate ?? today;
+  // 안되는 이유
+
+  // 인스턴스가 안생겼는데 클래스의 필드 사용하려고 해서 클래스 내부에서 사용 불가
+  // final todayDate = Book.publishDate.toString().substring(0,10);
 
   // copyWith()
   Book copyWith({
@@ -33,16 +44,21 @@ class Book{
   bool operator ==(Object other) =>
     identical(this, other) || 
     other is Book && 
-      title == other.title &&
-      publishDate.toString().substring(0,10) == other.publishDate.toString().substring(0,10);
-
+    title == other.title &&
+    publishDate.toString().substring(0,10) == other.publishDate.toString().substring(0,10);
+    // publishDate.DateTime(publishDate.year, publishDate.month, publishDate.day)
+  
   // 리턴이 있을수있나?
 
   // hashcode 재정의
   @override
   int get hashCode => title.hashCode ^ publishDate.hashCode;
 
-  // 컬렉션 라이브러리 첫 페이지에 testcode 
+  // static List<Book> bookList(List<Book> books){
+  //   books.sort((a, b) => a.publishDate.compareTo(b.publishDate));
+  //   return books;
+  // }
+  
 }
 
 // typedef Comparator<Book> = int Function(Book a, Book b);
@@ -53,25 +69,8 @@ class Book{
 //   }
 // }
 
-void main () {
+final List<Book> bookList = [];
 
-  Book book1 = Book(title: 'book01', comment: 'book1 comment', publishDate: DateTime.now());
-  Book book2 = Book(title: 'book01', comment: 'book2 comment', publishDate: DateTime(2025,6,19,00,00));
-  Book book3 = Book(title: 'book03', comment: 'book3 comment', publishDate: DateTime(2025,6,01,12,30));
-
-  final List<Book> bookList = [];
-  // final List<Book> sortedBookList = bookList.sorted((a, b) => -a.compareTo(b));
-
-  bookList.add(book1);
-  bookList.add(book2);
-  bookList.add(book3);
-
-  bookList.sort((a, b) => a.publishDate.compareTo(b.publishDate));
-
-  print(book1.publishDate);
-  print(book2.publishDate);
-  print(book1 == book2);
-
-  print(bookList);
-
+void bookListVoid () {
+  bookList.sort((a, b) => -a.publishDate.compareTo(b.publishDate));
 }

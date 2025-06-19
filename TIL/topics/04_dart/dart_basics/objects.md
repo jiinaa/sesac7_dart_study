@@ -11,6 +11,7 @@
 1. .toString(): 문자열 표현을 얻음
 - 모든 object 가 가지고 있음, 암묵적으로
 - print 할때 암묵적으로 toString()을 가지고 있다고 본다
+- 객체의 내용을 알기쉽게 보여주기 위해서 toString 메서드를 사용한다
 
 2. operator ==: 비교
 
