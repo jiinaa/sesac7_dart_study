@@ -1,4 +1,4 @@
-class Book{
+class Book{ // comparable 사용 class Book implements Comparable<Book>
   String title;
   DateTime publishDate;
   String comment;
@@ -24,7 +24,7 @@ class Book{
   // 인스턴스가 안생겼는데 클래스의 필드 사용하려고 해서 클래스 내부에서 사용 불가
   // final todayDate = Book.publishDate.toString().substring(0,10);
 
-  // copyWith() 일부필드만 수정하는 코드인가?
+  // copyWith()
   Book copyWith({
     String? title,
     String? comment,
@@ -44,22 +44,24 @@ class Book{
   }
 
   // 제목과 출간일이 같으면 같은 책으로 판단한다
-  // 연산자 재정의
+  // 연산자 재정의: 단일식을 리턴하는 간단한 함수 표현식
   @override
   bool operator ==(Object other) =>
     identical(this, other) || 
     other is Book && 
     title == other.title &&
-    // publishDate.toString().substring(0,10) == other.publishDate.toString().substring(0,10) &&
-    publishDate.year == other.publishDate.year &&
-    publishDate.month == other.publishDate.month &&
-    publishDate.day == other.publishDate.day;
-  
-  // 리턴이 있을수있나?
+    publishDate.toString().substring(0,10) == other.publishDate.toString().substring(0,10);
+    // publishDate.year == other.publishDate.year &&
+    // publishDate.month == other.publishDate.month &&
+    // publishDate.day == other.publishDate.day;
+
 
   // hashcode 재정의
   @override
-  int get hashCode => title.hashCode ^ publishDate.hashCode;
+  int get hashCode => title.hashCode ^ publishDate.toString().substring(0,10).hashCode; 
+  
+  // Q. 시분초까지 붙은 publishDate 의 hashcode 와 equals 에서 재정의한 publishDate의 day까지만 보고 비교했을때 가능한 건가? 완전히 똑같이 재정의해줘야 의미가 있는건가?
+  // A. 그렇다. 똑같은 규칙으로 재정의해줘야 의미가 있음
 
   // static List<Book> bookList(List<Book> books){
   //   books.sort((a, b) => a.publishDate.compareTo(b.publishDate));
@@ -69,6 +71,12 @@ class Book{
   // 정렬 함수: 출간일 기준 내림차순 정렬
   // Book class의 정적타입 메서드: 정적타입 메서드를 사용하는 이유
   // 인스턴스 생성 없이도 호출할 수 있기 때문에 Book.bookList
+  
+  // compareTo 이 방법도 작성해보기
+  // @override
+  // int compareTo(other){
+    
+  // }
   
 }
 

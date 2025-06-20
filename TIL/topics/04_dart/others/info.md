@@ -55,3 +55,5 @@
 # 단축키
 - 타입 계층 F12
 - structure 확인 하는 창 cmd + shift + o
+
+# 불변성

@@ -68,6 +68,8 @@ void main () {
     Book book8 = Book(title: 'book8', comment: 'book8 comment', publishDate: today);
     Book book9 = book8.copyWith();
 
+    // hashcode 값은 같지만 참조 주소는 다르다를 확인해야함
+
     // expect(SetEquality(IdentityEquality(book8, book9)), true);
     expect(identical(book8, book9), false);
   });

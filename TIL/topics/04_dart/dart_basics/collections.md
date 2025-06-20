@@ -208,8 +208,8 @@ print(heros[0].name); // '한석봉'
 ```dart
 // 참조기반의 사용자 정의된 타입을 복사해서 사용하기 위해 copyWith 메서드 구현
   Hero copyWith({
-    String name = '',
-    double hp = 0,
+    String? name,
+    double? hp,
   }) {
     return Hero(
       name: name ?? this.name,
