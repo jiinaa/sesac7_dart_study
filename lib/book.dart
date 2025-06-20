@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 class Book{ // comparable 사용 class Book implements Comparable<Book>
   String title;
   DateTime publishDate;
@@ -103,7 +105,7 @@ class SortBookList {
 
   void add(Book book) {
     _bookList.add(book);
-    _bookList.sort((a, b) => -a.publishDate.compareTo(b.publishDate));
+    _bookList.sorted((a, b) => -a.publishDate.compareTo(b.publishDate));
   }
 
   void clear() => _bookList.clear();
