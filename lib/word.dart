@@ -4,6 +4,10 @@ class Word {
 
   bool isVowel(int i) {
     
+    if (i < 0 || i >= word.length) {
+      throw RangeError('Index $i is out of range for word of length ${word.length}');
+    }
+
     String lo = word[i].toLowerCase();
     // return lo == 'a' || lo == 'e' || lo == 'i' || lo == 'o' || lo == 'u';
     return ('aeiou').contains(lo);

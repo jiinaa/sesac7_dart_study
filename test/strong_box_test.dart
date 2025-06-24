@@ -40,7 +40,7 @@ void main() {
 
   test('dial key로는 30000번째에 성공한다',(){
 
-    final dialKey = KeyType(selectedLockType: LockType.dial, value: 'button');
+    final dialKey = KeyType(selectedLockType: LockType.dial, value: 'dial');
     final box04 = StrongBox();
 
     // 29999번째까지 false
