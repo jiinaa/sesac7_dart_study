@@ -36,8 +36,9 @@ class User {
 
     // 역직렬화
     User.fromJson(Map<String, dynamic> json)
-        : name = json['name'],
-        email = json['email'];
+        : name = json['name'], // Map 에서 객체 접근시 List[0] 이런것과 같이 Map[key 값]으로 접근해서 사용한다
+        email = json['email'],
+        address = Address.fromJson(json['leader']);
 
     // 직렬화
     Map<String, dynamic> toJson() {
@@ -49,14 +50,23 @@ class User {
 
 - String 형태의 JSON을 역직렬화 하여 객체로 변환
 ```dart
-// 서버에서 받은 값
-final String jsonString = '''{"name": "john", "email": "john@gmail.com"}''';
+// 서버에서 받은 값 string
+final String jsonString = '''{
+  "name": "john",
+  "email": "john@gmail.com",
+  "address": {
+    "address": "Seoul"
+  }
+}''';
 
 // JsonString -> Map
-final Map<String, dynamic> json = jsonDecode(jsonString);
+final Map<String, dynamic> json = jsonDecode(jsonString); 
+
+// { "name": "john", "email": "john@gmail.com", "address": { "address": "Seoul" } }
 
 // Map -> 객체
 final User user = User.fromJson(json);
+// User(name: 'john', email: 'john@gmail.com', address: Address(address : 'Seoul'));
 ```
 
 - 객체를 Json String 형태로 직렬화

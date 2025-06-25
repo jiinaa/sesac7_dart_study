@@ -6,6 +6,8 @@
 3. 파일을 닫는다
 
 ```dart
-final file = File('save.txt'); // 파일 쓰기
+final file = File('save.txt'); // 파일 열기
 final text = file.readAsStringSync(); // 파일 읽기
+final text = file.writeAsStringSync('내용', mode: FileMode.append); // 파일 쓰기, 파일이 없다면 새로 생성하면서 이어쓰기 함
+final text = file.writeAsStringSync('내용', mode: FileMode.write); // 파일 쓰기, 파일이 없다면 새로 생성하면서 완전히 덮어쓰기 함
 ```
