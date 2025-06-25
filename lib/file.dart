@@ -7,10 +7,33 @@ abstract interface class FileOperations {
   // [targetPath] 파일이 복사될 대상 경로
 
   // 복사란 읽어서 쓰기
-  void copy(String sourcePath, String targetPath){
-    final file = File(sourcePath);
-    final readFile = file.readAsStringSync(); // 읽기
-    file.writeAsStringSync(readFile, mode: FileMode.write); // 쓰기
-  }
+  void copy(String sourcePath, String targetPath);
   
+}
+
+class CopyFile implements FileOperations {
+
+  String sourcePath;
+  String targetPath;
+  // CopyFile(this.sourcePath, targetPath): _targetPath = targetPath{
+  //   targetPath = '${sourcePath}_copy';
+  // }
+
+  CopyFile(this.sourcePath, this.targetPath);
+
+  @override
+  void copy(String sourcePath, String targetPath) {
+    final file = File(sourcePath);
+    final newFile = File(targetPath);
+
+    // 원본 파일이 존재하지 않으면 경로에 해당 파일 새로 생성
+    if (!file.existsSync()) {
+      file.writeAsStringSync('');
+    }
+
+    final readFile = file.readAsStringSync(); // 읽기
+    // file.writeAsStringSync('_copy', mode: FileMode.append);
+    newFile.writeAsStringSync(readFile, mode: FileMode.write); // 쓰기
+  }
+
 }
