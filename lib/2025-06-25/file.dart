@@ -1,15 +1,18 @@
-import 'dart:convert';
 import 'dart:io';
 
 void main() {
-  final file = File('save.txt'); // 절대경로
-  file.writeAsStringSync('hello\n', mode: FileMode.append);
-  file.writeAsStringSync('hello\\', mode: FileMode.append);
-  file.writeAsStringSync('hello\t', mode: FileMode.append);
+  final file = File('save.txt'); // 절대경로 작성 save.txt
 
-  print(file.readAsStringSync());
+  // 파일에 문자열을 추가 (append 모드)
+  file.writeAsStringSync('hello\n', mode: FileMode.append);   // 줄바꿈 포함
+  file.writeAsStringSync('hello\\', mode: FileMode.append);   // 역슬래시
+  file.writeAsStringSync('hello\t', mode: FileMode.append);   // 탭
 
-  // 복사 : 읽어서 쓰면 복사
+  // 파일의 모든 내용을 읽어서 출력
+  final content = file.readAsStringSync();
+  print(content);
+
+  // 복사란 읽어서 쓰면 복사
 }
 
 // JSON 이 그래서 왜 컴퓨터도 편하다고 생각하는거지?
