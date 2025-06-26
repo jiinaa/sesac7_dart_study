@@ -8,6 +8,9 @@ void main () {
   // 총무부 리더, 홍길동, 41세 의 인스턴스를 생성
   final person = Employee(name: '홍길동', age: 41);
   final team = Department(name: '총무부', leader: person);
+
+  // final department = Department(name: '총무부', leader: Employee(name: '홍길동', age: 41));
+
   final filePath = 'lib/company.txt';
 
   final result = saveFile(team, filePath);
@@ -41,7 +44,7 @@ void main () {
       expect(team.leader.age, equals(dept.leader.age,));
 
     } on FileSystemException catch (e) {
-      // FileSystemException ? 
+      // FileSystemException: 파일시스템 관련 오류 발생시 사용하는 예외 클래스
       fail('파일 시스템 오류: $e');
     } on FormatException catch (e) {
       fail('JSON 파싱 오류: $e');
@@ -49,5 +52,14 @@ void main () {
       fail('예상하지 못한 오류: $e');
     }
      
+  });
+
+  tearDown((){
+    // 테스트 끝날때 마다 샐행
+    final file = File(filePath);
+
+    if(file.existsSync()) {
+      file.deleteSync();
+    }
   });
 }

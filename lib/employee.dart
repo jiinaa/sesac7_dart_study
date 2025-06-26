@@ -10,6 +10,12 @@ class Employee {
   @override
   String toString() => 'Employee(name: $name, age: $age)';
 
+  // copyWith 해서 동등성 비교 추가하기
+  // @override 
+  // Employee copyWith(){
+
+  // }
+
   // 직렬화, 직렬화를 위해 클래스 일부를 수정
   Map<String, dynamic> toJson() {
     return {'name': name, 'age': age};
@@ -38,10 +44,10 @@ class Department {
   // 역직렬화를 위해서 파싱
   Department.fromJson(Map<String, dynamic> json) 
     : name = json['name'],
-    leader = Employee.fromJson(json['leader']);
+    leader = Employee.fromJson(json['leader']); // 이니셜라이즈 리스트
 }
 
-saveFile (Department dept, String filePath) {
+String saveFile (Department dept, String filePath) {
 
   // 객체 -> Map
   final Map<String, dynamic> json = dept.toJson();
