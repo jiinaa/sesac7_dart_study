@@ -22,6 +22,9 @@
 class Address{
     final String address;
 
+    Address.fromJson(Map<String, dynamic> json)
+    : address = json['address'];
+
     Map<String, dynamic> toJson() {
         return {'address': address};
     }
@@ -38,7 +41,7 @@ class User {
     User.fromJson(Map<String, dynamic> json)
         : name = json['name'], // Map 에서 객체 접근시 List[0] 이런것과 같이 Map[key 값]으로 접근해서 사용한다
         email = json['email'],
-        address = Address.fromJson(json['leader']);
+        address = Address.fromJson(json['address']);
 
     // 직렬화
     Map<String, dynamic> toJson() {

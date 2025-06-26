@@ -3,7 +3,7 @@ void main() {
   // final numString = '10.5';
 }
 
-checkNum(e) {
+int checkNum(e) {
   final String numString = e; 
 
   try {

@@ -23,7 +23,7 @@ void main () {
 
     sourceFile.writeAsStringSync('hello', mode: FileMode.append); 
 
-    final targetFile = File(source);
+    final targetFile = File(target);
 
     final testFile02 = CopyFile(source, target);
     testFile02.copy(source, target);

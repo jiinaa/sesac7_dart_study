@@ -23,17 +23,24 @@ class CopyFile implements FileOperations {
 
   @override
   void copy(String sourcePath, String targetPath) {
-    final file = File(sourcePath);
-    final newFile = File(targetPath);
+    
+    try {
+      final file = File(sourcePath);
+      final newFile = File(targetPath);
 
-    // 원본 파일이 존재하지 않으면 경로에 해당 파일 새로 생성
-    if (!file.existsSync()) {
-      file.writeAsStringSync('');
+      // 원본 파일이 존재하지 않으면 경로에 해당 파일 새로 생성
+      if (!file.existsSync()) {
+        file.writeAsStringSync('');
+      }
+
+      final readFile = file.readAsStringSync(); // 읽기
+      // file.writeAsStringSync('_copy', mode: FileMode.append);
+      newFile.writeAsStringSync(readFile, mode: FileMode.write); // 쓰기
+      
+    } on FileSystemException catch (e) {
+      throw Exception('파일복사중 오류발생 ${e.message}');
     }
-
-    final readFile = file.readAsStringSync(); // 읽기
-    // file.writeAsStringSync('_copy', mode: FileMode.append);
-    newFile.writeAsStringSync(readFile, mode: FileMode.write); // 쓰기
+    
   }
 
 }
