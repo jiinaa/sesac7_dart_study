@@ -16,26 +16,13 @@ class Movie{
   String toString() => 'Movie(title: $title, director: $director, year: $year)';
 }
 
-Future<dynamic> getMovieInfo() async{
+Future<dynamic> getMovieInfo(json) async{
   await Future.delayed(Duration(seconds: 2));
 
-  final String jsonString = '''
-  [
-    {
-      "title": "Star Ward",
-      "director": "George Lucas",
-      "year": 1977
-    },
-    {
-      "title": "Star Ward2",
-      "director": "George Lucas",
-      "year": 1978
-    }
-  ]
-  ''';
+  final dynamic jsonString = jsonDecode(json);
 
   if (jsonString is List) {
-    final List<dynamic> movies = jsonDecode(jsonString); //List<Map<String, dynamic>>
+    final List<dynamic> movies = jsonString; //List<Map<String, dynamic>>
     // final Movie movieList = Movie.fromJson(movies);
     final List<Movie> movieList = movies
       .map((item) => Movie.fromJson(item))
@@ -43,7 +30,7 @@ Future<dynamic> getMovieInfo() async{
 
     return movieList;
   } else if (jsonString is Map<String, dynamic>) {
-    final Map<String, dynamic> movies = jsonDecode(jsonString);
+    final Map<String, dynamic> movies = jsonString;
     final movieList = Movie.fromJson(movies);
 
     return movieList;
@@ -53,5 +40,5 @@ Future<dynamic> getMovieInfo() async{
 }
 
 void main() {
-  getMovieInfo();
+  // getMovieInfo();
 }

@@ -10,6 +10,8 @@
     // Futrue 생성자
  }
 ```
+- fetchData() 는 Future 타입이라서 실행 예정인 것
+
 
 ### async / await 사용
 - async 가 붙어있는 비동기 함수여야지 순차적으로 만들수 있다, 암묵적으로 Future 타입이라고 본다
