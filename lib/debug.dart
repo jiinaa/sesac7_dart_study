@@ -38,7 +38,7 @@ readJsonFile() {
 
     return chartList;
   } catch (e) {
-    print('Error $e');
+    return print('Error $e');
   }
 }
 
