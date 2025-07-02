@@ -13,6 +13,10 @@ abstract interface class TodoDataSource {
 class TodoDataSourceImpl implements TodoDataSource{
   
   @override
+  // 선언만 되고 실행되기 전 인 상태
+  // Future를 리턴하는 비동기 함수
+  // Future는 아직 완료되지 않은 비동기 작업의 결과를 담는 객체이며 미래에 값 또는 에러를 반환할 것을 약속한다
+
   Future<Todo> getToDo() async {
 
     final jsonFile = await File('lib/assets/todo.json').readAsString();
@@ -55,7 +59,13 @@ class Todo{
       id : (todoMap['id']) ?? 0,
       title : (todoMap['title'] ?? ''),
       completed : (todoMap['completed'] ?? false));
-  }  
+  } 
+
+  Map<String, dynamic> toJson(){
+    // 아래 하나하나가 의미하는게 정확히 뭐지? 
+    // map 의 키 userId 에 Todo 객체의 필드값 userId 를 담겠다 
+    return {'userId' : userId, 'id' : id, 'title' : title, 'completed' : completed};
+  }
 }
 
 
