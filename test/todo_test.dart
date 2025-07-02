@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:test/test.dart';
 import 'package:modu_3_dart_study/todo.dart';
@@ -10,7 +9,7 @@ void main() async {
   final todoInstance = TodoDataSourceImpl(); // 인스턴스 생성
   final todo01 = await todoInstance.getToDo();
 
-    final todoList = await todoInstance.getToDos(); // list 생성
+  final todoList = await todoInstance.getToDos(); // list 생성
 
   group('단일 todo 테스트',() {
       // await 없이 호출하면 결과를 기다리지 않고 그냥 객체 자체를 반환함
