@@ -9,6 +9,10 @@ class StockListingImpl implements StockDataSource{
   Future<List<StockListing>> getStockListings() async {
     final file = await File('lib/assets/listing_status.csv').readAsLines();
     final lines = file.skip(1);
+    
+    // 첫번째 값 무시하기
+    // removeAt(0)
+    // 
 
     final List<StockListing> listings = lines.map((file) => StockListing.fromCsv(file))
     .where((file) => file.name != '')
