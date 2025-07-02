@@ -5,6 +5,8 @@ abstract interface class TodoDataSource {
   Future<Todo> getToDo(); 
   // 여기서 Future 타입으로 명시하는 이유?
   // 비동기 함수 명시, 데이터를 가져오는데 시간이 걸릴 수 있으니
+
+  Future<List<Todo>> getToDos();
 }
 
 // 구현체와 인터페이스를 구별하는 이유?
@@ -16,7 +18,6 @@ class TodoDataSourceImpl implements TodoDataSource{
   // 선언만 되고 실행되기 전 인 상태
   // Future를 리턴하는 비동기 함수
   // Future는 아직 완료되지 않은 비동기 작업의 결과를 담는 객체이며 미래에 값 또는 에러를 반환할 것을 약속한다
-
   Future<Todo> getToDo() async {
 
     final jsonFile = await File('lib/assets/todo.json').readAsString();
@@ -27,6 +28,14 @@ class TodoDataSourceImpl implements TodoDataSource{
     final todo = Todo.fromJson(todoMap);
 
     return todo;
+  }
+  
+  @override
+  Future<List<Todo>> getToDos() async{
+    final jsonsFile = await File('lib/assets/todos.json').readAsString();
+    List<dynamic> rawList = jsonDecode(jsonsFile);
+    List<Todo> todoList = rawList.map((item) => Todo.fromJson(item)).toList();
+    return todoList;
   }
 }
 
