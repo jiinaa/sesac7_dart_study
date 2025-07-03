@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:modu_3_dart_study/repository/photo_repository_impl.dart';
 import 'package:modu_3_dart_study/repository/photo_repository.dart';

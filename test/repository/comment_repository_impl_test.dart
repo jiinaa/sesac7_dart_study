@@ -1,4 +1,3 @@
-import 'package:modu_3_dart_study/model/comment.dart';
 import 'package:modu_3_dart_study/repository/comments_repository.dart';
 import 'package:modu_3_dart_study/data_source/local/comment_data_source.dart';
 import 'package:modu_3_dart_study/repository/comments_repository_impl.dart';
