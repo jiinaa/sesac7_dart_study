@@ -55,13 +55,13 @@ class Todo{
       throw FormatException('userId 타입 오류');
     }
     if( todoMap['id'] is! num ) {
-      throw FormatException('userId 타입 오류');
+      throw FormatException('num 타입 오류');
     }
     if( todoMap['title'] is! String ) {
-      throw FormatException('userId 타입 오류');
+      throw FormatException('title 타입 오류');
     }
     if( todoMap['completed'] is! bool ) {
-      throw FormatException('userId 타입 오류');
+      throw FormatException('completed 타입 오류');
     }
   
     return Todo(userId : (todoMap['userId'] ?? 0),
@@ -71,8 +71,6 @@ class Todo{
   } 
 
   Map<String, dynamic> toJson(){
-    // 아래 하나하나가 의미하는게 정확히 뭐지? 
-    // map 의 키 userId 에 Todo 객체의 필드값 userId 를 담겠다 
     return {'userId' : userId, 'id' : id, 'title' : title, 'completed' : completed};
   }
 }

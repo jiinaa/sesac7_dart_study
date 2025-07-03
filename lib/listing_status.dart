@@ -12,7 +12,7 @@ class StockListingImpl implements StockDataSource{
     
     // 첫번째 값 무시하기
     // removeAt(0)
-    // 
+    // file.sublist(1): 첫번째 요소를 제외한 
 
     final List<StockListing> listings = lines.map((file) => StockListing.fromCsv(file))
     .where((file) => file.name != '')

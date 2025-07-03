@@ -43,7 +43,7 @@ class User {
   }
 
   Map<String, dynamic> toJson(){
-    return {'id': id, 'name': name, 'username' : username, 'address' : address.toJson(), 'phone' : phone, 'website' : website, 'company' : company.toJson()};
+    return {'id': id, 'name': name, 'username' : username, 'email' : email, 'address' : address.toJson(), 'phone' : phone, 'website' : website, 'company' : company.toJson()};
   }
 
   @override
@@ -53,13 +53,14 @@ class User {
       id == other.id &&
       name == other.name &&
       username == other.username &&
+      email == other.email &&
       address == other.address &&
       phone == other.phone &&
       website == other.website &&
       company == other.company;
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ username.hashCode ^ address.hashCode ^ phone.hashCode ^ website.hashCode ^ company.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ username.hashCode ^ email.hashCode ^ address.hashCode ^ phone.hashCode ^ website.hashCode ^ company.hashCode;
 
   @override
   String toString() => 'id: $id, name: $name, username: $username, phone: $phone, website: $website, company: $company';
@@ -83,7 +84,7 @@ class Address {
   }
 
   Map<String, dynamic> toJson(){
-    return {'street' : street, 'city' : city, 'zipcode' : zipcode, 'geo' : geo.toJson() };
+    return {'street' : street, 'suite': suite, 'city' : city, 'zipcode' : zipcode, 'geo' : geo.toJson() };
   }
 
   @override
@@ -113,7 +114,7 @@ class Geo {
   }
 
   Map<String, dynamic> toJson(){
-    return {'lat' : lat, 'lan': lng};
+    return {'lat' : lat, 'lng': lng};
   }
 
   @override
