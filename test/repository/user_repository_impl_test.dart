@@ -9,7 +9,7 @@ import 'package:test/test.dart';
 
 void main () async {
   final jsonString = await File('lib/assets/users.json').readAsString();
-  List<dynamic> json = jsonDecode(jsonString);
+  List<Map<String, dynamic>> json = jsonDecode(jsonString);
 
   final UserDataSource userDataSource = MockUserDataSourceImpl(json);
   final UserRepository repository = UserRepositoryImpl(userDataSource);

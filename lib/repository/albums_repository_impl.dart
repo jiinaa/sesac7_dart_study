@@ -17,9 +17,7 @@ class AlbumsRepositoryImpl implements AlbumsRepository{
     } else if ( limit > allResults.length) {
       return allResults;
     } else {
-      return results
-        .map((e) => Album.fromJson(e))
-        .toList()
+      return allResults
         .sublist(0, limit);
     }    
   }  
