@@ -26,7 +26,7 @@
 - DataSource는 DTO를 반환
 - Repository는 Model로 변환하여 반환
 
-- @freezed 사용시
+## @freezed 사용시
 List 내부값에 접근할 수 없도록 되어있다.
 실제로 List 값 바꾸려면 copyWith 활용
 That behavior can be disabled by writing:
@@ -42,5 +42,8 @@ void main() {
   example.list.add(42); // OK
 }
 ```
+### @Freezed(makeCollectionsUnmodifiable: false)
+- final List 는 선언은 final 이지만 실제로 List 내부 값들은 조작이 가능하다
+- unmodifiable 해주면 List의 모든 값에 접근할 수 없도록 만들어준다
 
 

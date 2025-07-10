@@ -37,13 +37,15 @@ extension DtoToPhotoMapper on PhotoDto {
 }
 
 extension ModelPhotoToDtoMapper on ModelPhoto {
-  ModelPhoto toDto() {
-    return ModelPhoto(
+  PhotoDto toDto() {
+    return PhotoDto(
       id: id,
-      type: type,
+      type: type.name,
       title: title,
       content: content,
-      createdAt: createdAt,
+      createdAt: createdAt.toIso8601String(),
+      // toIso8601String(): ISO 8610 포맷으로 표준화된 형식으로 변환
+      // 국제표준 날짜 및 시간 형식
       url: url,
       caption: caption,
     );
