@@ -1,5 +1,5 @@
-import 'package:http/http.dart' as http;
 import 'package:modu_3_dart_study/core/network_error.dart';
+import 'package:modu_3_dart_study/core/response.dart';
 import 'package:modu_3_dart_study/core/result.dart';
 import 'package:modu_3_dart_study/data_source/remote/app_user_data_source.dart';
 import 'package:modu_3_dart_study/dto/app_user_dto.dart';
@@ -37,14 +37,24 @@ class AppUserRepositoryImpl implements AppUserRepository {
           .createUser(dto)
           .timeout(const Duration(seconds: 10));
 
-      switch (result) {
-        // Success 타입의 객체가 result 에 들어있을때 그 객체를 success라는 이름으로 받겠다
-        case Success<AppUserDto, NetworkError> success:
-          return Result.success(success.value);
-        case Failure<AppUserDto, NetworkError> failure:
-          final statusCode = result.statusCode;
-          final errorType = statusCodeToError(statusCode);
-          return Result.failure(errorType);
+      print('런타임 타입 : ${result.runtimeType}');
+      // 런타임 타입 : Response<AppUserDto>
+
+      // switch (result) {
+      //   // Success 타입의 객체가 result 에 들어있을때 그 객체를 success라는 이름으로 받겠다
+      //   case Success<Response<AppUserDto>, NetworkError> success:
+      //     return Result.success(success.value.body);
+      //   case Failure<Response<AppUserDto>, NetworkError> failure:
+      //     final statusCode = result.statusCode;
+      //     final errorType = statusCodeToError(statusCode);
+      //     return Result.failure(errorType);
+      // }
+
+      if (result.statusCode >= 200 && result.statusCode < 300) {
+        return Result.success(result.body);
+      } else {
+        final errorType = statusCodeToError(result.statusCode);
+        return Result.failure(errorType);
       }
     } on TimeoutException {
       return Result.failure(NetworkError.requestTimeout);
