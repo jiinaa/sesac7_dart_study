@@ -8,7 +8,7 @@ abstract interface class AppUserRepository {
   Future<Result<AppUser, NetworkError>> getUser(int userId);
 
   // Todo 전체 사용자 목록을 조회하는 메서드
-  Future<Result<List, NetworkError>> getUserList();
+  Future<Result<List<AppUser>, NetworkError>> getUserList();
 
   // Todo 새 사용자를 생성하는 메서드
   Future<Result<AppUserDto, NetworkError>> createUser(AppUser appUser);

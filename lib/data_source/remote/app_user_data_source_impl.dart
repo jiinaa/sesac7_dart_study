@@ -9,7 +9,7 @@ import 'package:modu_3_dart_study/model/app_user.dart';
 class AppUserDataSourceImpl implements AppUserDataSource {
   final String baseUrl;
 
-  http.Client _client;
+  final http.Client _client;
   AppUserDataSourceImpl({http.Client? client, required this.baseUrl})
     : _client = client ?? http.Client();
 

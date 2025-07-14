@@ -28,9 +28,9 @@ void main() {
     expect(stores.isNotEmpty, true);
 
     for (final store in stores) {
-      expect(store.createdAt != null && store.createdAt!.isNotEmpty, true);
-      expect(store.remainStat != null && store.remainStat!.isNotEmpty, true);
-      expect(store.stockAt != null && store.stockAt!.isNotEmpty, true);
+      expect(store.createdAt.isNotEmpty, true);
+      expect(store.remainStat.isNotEmpty, true);
+      expect(store.stockAt.isNotEmpty, true);
     }
   });
 }

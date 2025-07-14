@@ -22,12 +22,9 @@ class StoreRepositoryImpl implements StoreRepository {
         .map((StoreDto dto) => dto.toModel())
         .where(
           (store) =>
-              store.remainStat != null &&
-              store.remainStat!.isNotEmpty &&
-              store.stockAt != null &&
-              store.stockAt!.isNotEmpty &&
-              store.createdAt != null &&
-              store.createdAt!.isNotEmpty,
+              store.remainStat.isNotEmpty &&
+              store.stockAt.isNotEmpty &&
+              store.createdAt.isNotEmpty,
         )
         .toList();
   }

@@ -16,7 +16,7 @@ class RemoteStoreDataSourceImpl implements RemoteStoreDataSource {
   // 내부에 get(), post() 같은 메서드가 있다
   // http.get(...) 은 실제로 http.Client().get() 이다
 
-  http.Client _client;
+  final http.Client _client;
   RemoteStoreDataSourceImpl({http.Client? client, required this.baseUrl})
     : _client = client ?? http.Client();
 

@@ -26,6 +26,15 @@ void main() {
     }
   });
 
+  // mockito 활용하기
+  // 1. test('getUser의 타임아웃', () async {
+  //   throw TimeoutException('', Duration(seconds: 10));
+
+  //   expect(actual, matcher)
+  // });
+
+  // 2. json 파싱 에러
+
   test('getUserList 실제 api 호출이 정상적으로 작동한다', () async {
     final dataSource = AppUserDataSourceImpl(
       baseUrl: 'http://jsonplaceholder.typicode.com/posts',

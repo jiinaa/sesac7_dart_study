@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:modu_3_dart_study/data_source/remote/json_place_holder_data_source_impl.dart';
 import 'package:modu_3_dart_study/data_source/remote/remote_data_source.dart';
 
-import '../../test/mocks/mock_json_place_holder.dart';
 
 void main () {
   test('getPost',() async {

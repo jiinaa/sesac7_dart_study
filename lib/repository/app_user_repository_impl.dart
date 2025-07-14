@@ -1,5 +1,4 @@
 import 'package:modu_3_dart_study/core/network_error.dart';
-import 'package:modu_3_dart_study/core/response.dart';
 import 'package:modu_3_dart_study/core/result.dart';
 import 'package:modu_3_dart_study/data_source/remote/app_user_data_source.dart';
 import 'package:modu_3_dart_study/dto/app_user_dto.dart';
@@ -11,6 +10,9 @@ import 'dart:async';
 class AppUserRepositoryImpl implements AppUserRepository {
   final AppUserDataSource _appUserDataSource;
   AppUserRepositoryImpl(this._appUserDataSource);
+
+  // 인터페이스들이 들어오게 구성하고
+  // 기능에 대한것도 인터페이스로 받아서 조합해서 사용
 
   NetworkError statusCodeToError(int? statusCode) {
     switch (statusCode) {
@@ -27,6 +29,8 @@ class AppUserRepositoryImpl implements AppUserRepository {
         return NetworkError.unknown;
     }
   }
+
+  // 따로 파일로 만들어서 구성
 
   @override
   Future<Result<AppUserDto, NetworkError>> createUser(AppUser appUser) async {
@@ -49,6 +53,7 @@ class AppUserRepositoryImpl implements AppUserRepository {
       //     final errorType = statusCodeToError(statusCode);
       //     return Result.failure(errorType);
       // }
+      // switch case 로 한 경우 타입 불일치때문에 계속 아무것에도 안걸리고 빠져나감
 
       if (result.statusCode >= 200 && result.statusCode < 300) {
         return Result.success(result.body);
@@ -74,6 +79,10 @@ class AppUserRepositoryImpl implements AppUserRepository {
       final result = await _appUserDataSource
           .getUser(userId)
           .timeout(const Duration(seconds: 10));
+
+      // const Duration(seconds: 10)
+      // Duration const 생성자여서 const 붙이면 반복해서 사용하지 않아도 된다
+      // static const titmeLimit = Duration(seconds: 10);
 
       switch (result) {
         // Success 타입의 객체가 result 에 들어있을때 그 객체를 success라는 이름으로 받겠다

@@ -2,6 +2,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'app_user.g.dart';
 
+// freezed로 작성
+
 @JsonSerializable()
 class AppUser {
   final int userId;

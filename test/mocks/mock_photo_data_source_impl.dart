@@ -1,6 +1,4 @@
-import 'package:modu_3_dart_study/core/response.dart';
 import 'package:modu_3_dart_study/data_source/local/photo_data_source.dart';
-import 'package:modu_3_dart_study/dto/photo_dto.dart';
 
 class MockPhotoDataSourceImpl implements PhotoDataSource {
   final mockData = [

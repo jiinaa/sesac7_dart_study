@@ -4,7 +4,6 @@ import 'package:modu_3_dart_study/mapper/photo_mapper.dart';
 import 'package:modu_3_dart_study/model/model_photo.dart';
 import 'package:modu_3_dart_study/repository/model_photo_repository.dart';
 
-import '../core/response.dart';
 
 class ModelPhotoRepositoryImpl implements ModelPhotoRepository {
   final PhotoDataSource _photoDataSource;
